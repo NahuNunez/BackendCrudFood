@@ -1,0 +1,23 @@
+{
+  "name": "backendcrudfood",
+  "version": "1.0.0",
+  "description": "El backend del proyecto Crud Food",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [
+    "rutas",
+    "controlador",
+    "BD MongoBD",
+    "middlewares"
+  ],
+  "author": "Nahuel Nuñez",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "morgan": "^1.10.1"
+  }
+}
