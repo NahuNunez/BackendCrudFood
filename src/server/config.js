@@ -1,10 +1,11 @@
 import express from "express"; //Al ser modulos no necesitan una url o ubicacion
 import morgan from "morgan";
 import cors from "cors"
-
 import { dirname } from "path" /* importa la función dirname del módulo nativo path de Node.js, utilizada para extraer el directorio principal de una ruta de archivo. 
 Elimina el último componente (nombre del archivo o directorio) y devuelve la ruta al directorio padre, siendo útil para obtener la ubicación de archivos en módulos ES6 o CommonJS.  */
 import { fileURLToPath } from "url";
+import "./dbConfig.js"
+
 
 //Estamos creando la instacion para ejectuar el servidor y configurando express que nos permite acceder al puerto.
 export default class Server {
