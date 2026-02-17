@@ -1,3 +1,6 @@
+//En Server va la configuracion interna del servidor, es donde vamos a necesitar instalar los middlewares.
+
+
 import express from "express"; //Al ser modulos no necesitan una url o ubicacion
 import morgan from "morgan";
 import cors from "cors"

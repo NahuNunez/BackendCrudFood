@@ -1,3 +1,6 @@
+//Models va a tener el diseño de la estructura de los datos. 
+
+
 import mongoose from "mongoose";
 
 const productoSchema = new Schema({
@@ -39,7 +42,19 @@ const productoSchema = new Schema({
     },
     imagen: {
         type: String,
-        required: true
+        required: true,
+        validate: {
+            validator: (valor) =>{
+                return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?(\.(jpg|jpeg|png|webp))$/.test(valor)
+            }
+        }
     }
+},
+{
+    timestamps: true //esta propiedad nos da informacion extra sobre cuando fue creado o actualizado.
+}
+)
 
-})
+const Producto = mongoose.model("producto", productoSchema)
+
+export default Producto;
