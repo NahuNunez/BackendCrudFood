@@ -1,7 +1,7 @@
 //Models va a tener el diseño de la estructura de los datos. 
 
 
-import mongoose from "mongoose";
+import mongoose,{ Schema }  from "mongoose";
 
 const productoSchema = new Schema({
     nombreProducto: {
@@ -25,7 +25,7 @@ const productoSchema = new Schema({
         "Hamburguesas",
         "Postres",
         "Pizzas",
-        "Sandwiches y Wraps", 
+        "Sándwiches y Wraps", 
         "Veggie/Veganas"]
     },
     descripcion_breve: {
@@ -45,7 +45,9 @@ const productoSchema = new Schema({
         required: true,
         validate: {
             validator: (valor) =>{
-                return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?(\.(jpg|jpeg|png|webp))$/.test(valor)
+                //return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?(\.(jpg|jpeg|png|webp))$/.test(valor)
+
+                return /(https?:\/\/.*\.(?:png|jpg|jpeg|webp))/i.test(valor); //codigo por chatgpt
             }
         }
     }
