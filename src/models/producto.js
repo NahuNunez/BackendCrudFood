@@ -19,7 +19,7 @@ const productoSchema = new Schema({
     },
     categoria: {
         type: String,
-        enum: ["acompañamientos",
+        enum: ["Acompañamientos",
         "bebidas",
         "Ensaladas",
         "Hamburguesas",

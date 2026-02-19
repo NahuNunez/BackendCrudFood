@@ -32,3 +32,72 @@ export const crearProducto = async (req, res) => {
     })
     }
 }
+
+export const listarProductos = async (req, res) => {
+    try {
+        const productos = await Producto.find();
+        res.status(200).json(productos)
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({mensaje: "Ocurrio un error al listar los productos"})
+    }
+}
+
+export const obtenerProducto = async (req, res) =>{
+    try {
+        console.log(req.params);
+        const productoBuscado = await Producto.findById(req.params.id)
+
+        if (!productoBuscado) {
+            return res.status(404).json({
+                mensaje: "No se encontro el producto :("
+            })
+        }
+        res.status(200).json(productoBuscado)
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            mensaje: "Ocurrio un error al obtener el producto"
+        })
+    }
+}
+
+export const borrarProductoPorID = async (req, res) =>{
+    try {
+        const productoBuscado = await Producto.findByIdAndDelete(req.params.id)
+        if (!productoBuscado) {
+            return res.status(404).json({
+                mensaje: "No se encontro el producto"
+            })
+        }
+        return res.status(200).json({
+            mensaje: "El producto fue borrado correctamente"
+        })
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            mensaje: "Ocurrio un error, no se pudo eliminar el producto"
+        })        
+    }
+}
+
+export const editarProductoPorID = async (req, res) =>{
+    try {
+        const productoBuscado = await Producto.findByIdAndUpdate(req.params.id, req.body)
+        if (!productoBuscado) {
+            return res.status(404).json({
+                mensaje: "No se encontro el producto"
+            })
+        }
+        return res.status(200).json({
+            mensaje: "El producto fue editado correctamente"
+        })
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            mensaje: "Ocurrio un error, no se pudo actualizar el producto correctamente"
+        })
+    }
+}
