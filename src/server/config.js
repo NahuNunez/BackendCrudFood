@@ -36,9 +36,18 @@ export default class Server {
         “Decile a Express que permita acceder desde el navegador a los archivos que estén dentro de la carpeta public” */
     }
 
-    listen() {
+    /* listen() {
         this.app.listen(this.port, () => 
         console.info(`El servidor se esta ejecutando en: http:localhost: ${this.port}`)
         )
+    } */
+   listen() {
+        // SOLO para local
+        if (process.env.NODE_ENV !== "production") {
+            this.app.listen(this.port, () => 
+              console.log(`Servidor corriendo en http://localhost:${this.port}`)
+            );
+        }
     }
+
 }
