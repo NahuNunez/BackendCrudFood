@@ -5,13 +5,6 @@ import productosRoutes from "./productos.routes.js"
 
 const router = Router();
 
-app.get("/api/test", (req,res)=>{
-  res.json({ok:true});
-});
-
-
-
-
 router.use("/productos", productosRoutes);
 
 export default router;
