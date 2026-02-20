@@ -1,0 +1,75 @@
+Tus errores concretos fueron estos:
+
+❌ 1. categoria no coincidía con el enum
+
+En tu modelo definiste:
+
+enum: ["Sandwiches y Wraps", ...]
+
+
+Pero en el POST mandaste:
+
+"categoria": "Sándwiches y Wraps"
+
+
+📌 Error:
+
+Tu schema espera: Sandwiches
+
+Vos mandaste: Sándwiches (con tilde)
+
+MongoDB es literal → "Sandwiches" ≠ "Sándwiches"
+
+Eso solo ya hace que .save() tire error.
+
+
+
+
+
+❌ 2. La validación de imagen estaba mal armada
+
+Tu regex exigía una barra antes de la extensión:
+
+\/?(\.(jpg|jpeg|png|webp))$
+
+
+Eso no coincide con URLs reales como:
+
+.../pexels-photo-33706251.jpeg
+
+
+Entonces:
+
+tu imagen era válida
+
+PERO tu regex decía “no válida”
+
+Mongoose rechazaba el documento
+
+
+
+
+
+❌ 3. Pensabas que era error del controlador (pero no)
+
+Tu controlador estaba bien:
+
+const productoNuevo = new Producto(req.body)
+await productoNuevo.save()
+
+
+El error NO estaba ahí
+👉 estaba en el schema
+
+Por eso veías solo:
+
+"Ocurrió un error al crear un producto"
+
+
+
+
+✔️ Mongo valida antes de guardar
+✔️ enum es estrictísimo
+✔️Las regex mal hechas rompen inserts
+✔️ No siempre el error está donde parece
+✔️ El 500 era consecuencia, no causa

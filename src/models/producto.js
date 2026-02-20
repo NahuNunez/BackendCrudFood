@@ -1,0 +1,62 @@
+//Models va a tener el diseño de la estructura de los datos. 
+
+
+import mongoose,{ Schema }  from "mongoose";
+
+const productoSchema = new Schema({
+    nombreProducto: {
+        type: String,
+        minLength: 2,
+        maxLength: 100,
+        required: true,
+        unique: true
+    },
+    precio: {
+        type: Number,
+        required: true,
+        min: 100,
+        max: 100000
+    },
+    categoria: {
+        type: String,
+        enum: ["Acompañamientos",
+        "bebidas",
+        "Ensaladas",
+        "Hamburguesas",
+        "Postres",
+        "Pizzas",
+        "Sándwiches y Wraps", 
+        "Veggie/Veganas"]
+    },
+    descripcion_breve: {
+        type: String,
+        required: true,
+        minLength: 5,
+        maxLength: 250
+    },
+    descripcion_amplia: {
+        type: String,
+        required: true,
+        minLength: 10,
+        maxLength: 500
+    },
+    imagen: {
+        type: String,
+        required: true,
+        validate: {
+            validator: (valor) =>{
+                //return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?(\.(jpg|jpeg|png|webp))$/.test(valor)
+
+                return /(https?:\/\/.*\.(?:png|jpg|jpeg|webp))/i.test(valor); //codigo por chatgpt
+            }
+        }
+    }
+},
+{
+    timestamps: true //esta propiedad nos da informacion extra sobre cuando fue creado o actualizado.
+}
+)
+
+const Producto = mongoose.model("producto", productoSchema)
+
+export default Producto;
