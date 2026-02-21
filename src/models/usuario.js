@@ -14,7 +14,7 @@ const usuarioSchema = new Schema({
         required: true,
         unique: true,
         validate: {
-            vaidator: (valor) => {
+            validator: (valor) => {
                 return /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(valor)
             }
         }
@@ -27,7 +27,7 @@ const usuarioSchema = new Schema({
                 return /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,64}$/.test(valor)
             }
         }
-    },
+    }
 },
 {
     timestamps: true

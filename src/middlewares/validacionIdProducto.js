@@ -1,7 +1,7 @@
 //Acá realizamos la logica para validar los id generados por mongo a cada producto.
 
 import { param } from "express-validator";
-import resultadoValidacion from "./resultadoValidacion";
+import resultadoValidacion from "./resultadoValidacion.js";
 
 const validacionIdProducto = [
     param("id")
