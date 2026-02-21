@@ -16,6 +16,7 @@ export default class Server {
     constructor(){
         this.app = express(); // llamamos a express
         this.port = process.env.PORT || 3001; //llamamos al puerto; Caso que el puerto no este disponible que vaya al 3001
+        app.get('/favicon.ico', (req, res) => res.status(204));
 
         //Ejecuta el metodo middleware
         this.middlewares();
