@@ -11,7 +11,7 @@ const validacionProducto = [
     .withMessage("El nombre es un dato obligatorio")
     .isLength({ min: 2, max: 100 })
     .withMessage("El nombre del producto debe tener entre 2 y 100 caracteres")
-    .custom(async(validationResult, {req} ) => {
+    .custom(async(valor, {req} ) => {
         const productoExistente = await Producto.findOne({
             nombreProducto: valor,
         })
