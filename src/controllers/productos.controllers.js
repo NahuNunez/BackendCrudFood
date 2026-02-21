@@ -24,18 +24,13 @@ export const crearProducto = async (req, res) => {
             producto: productoNuevo
         })
 
-    } /* catch (error) {
+    } catch (error) {
         console.error(error);
         //error interno del server
         res.status(500).json({
         mensaje: "Ocurrio un error al crear un producto"
     })
-    } */catch (error) {
-  console.log("ERROR REAL:", error);
-  res.status(500).json({
-    mensaje: error.message
-  });
-}
+    }
 }
 
 export const listarProductos = async (req, res) => {
