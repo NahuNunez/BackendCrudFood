@@ -1,4 +1,4 @@
-import { body, validationResult } from "express-validator";
+import { body } from "express-validator";
 //import Producto from "../models/producto.js";   //cuando trabajamos de tipo module necesitamos poner la extension del archivo (.js)
 import resultadoValidacion from "./resultadoValidacion.js";
 import Producto from "../models/producto.js";
