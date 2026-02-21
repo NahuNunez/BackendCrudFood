@@ -15,6 +15,6 @@ router.route("/test").get(prueba)
 
 router.route("/").post(validacionProducto, crearProducto).get(listarProductos)
 
-router.route("/:id").get(obtenerProducto).delete(borrarProductoPorID).put(editarProductoPorID)
+router.route("/:id").get(obtenerProducto).delete(borrarProductoPorID).put( validacionProducto ,editarProductoPorID)
 
 export default router;
